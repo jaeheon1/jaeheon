@@ -47,7 +47,7 @@ int main()
 	std::string G = "count";
 
 	std::cin >> value;
-	std::cout << value << std::endl;
+	std::cout << value << std::endl;.
 	std::cout << character<<std::endl;
 	std::cout << variable <<std::endl;
 	std::cout << x << std::endl;
