@@ -1,122 +1,101 @@
-﻿
-#include<iostream>
+﻿#include<iostream>
 #include<conio.h>
 #include<windows.h>
-
-//상위 클래스 =부모 클래스 
-//하위 클래스 =자식클래스
-
-
-class Monster
-{
-	//공개
-public:
-
-	int x;
-	int y;
-	int z;
-	void Death()
-	{
-		HP -= 10;
-		std::cout << HP << std::endl;
-    }
-
-	//보호
-protected:
-
-	int money = 100;
-private:
-	int HP = 100;
-
-
-	void Attack()
-	{
-		std::cout << "Attack" << std::endl;
-	}
-};
-
-class Child_Monster:public Monster
+/*class Animal
 {
 public:
-	void Speaking()
-	{
-		std::cout << "Hello" << std::endl;
-		std::cout <<money<< std::endl;
-	}
-	
-};
 
-//[]
-//위치 (x,y,z)
-//공격 
-//HP 를 확인할 수 있는 함수 
-struct Object
+	void Sound()
+	{
+		
+	}
+};
+class Dog:public Animal
 {
-
-
-	int x = 0; // 맴버 변수 
-	int y = 0;
-	int z = 0;
-
-	int HP = 100;
-	void Attack() //맴버 함수 
+	void Sound()
 	{
-		std::cout << "공격" << std::endl;
+		std::cout << "멍멍" << std::endl;
 	}
-	void Health()
-	{
-		std::cout << "현재 체력은 HP 입니다. " << HP << std::endl;
-	}
-	
 };
-
-//public (건들수있음)
-
-//private (건들수없음)
-
-//struct 는 접근 지정자를 따로 설정 하지 않으면 접근지정자가 public으로 설정되어 있습니다. 
-//class 같은 경우는 모든게 private으로 되어 있어서 접근을 할수없다. 따라서 접근 지정자를 따로 설정 해줘야한다. 
-//protect 는 상속된 객체가 아니면 쓸수가없다. 
-//private 안에 있는건 건들수없지만 함수로 정의를 해서  깍아내리는건 가능하다. 예를 들어서 체력을 깎기.
-
+class Cat :public Animal
+{
+	void Sound()
+	{
+		std::cout << "야옹" << std::endl;
+	}
+}; */
+//기본 매개변수  == 사용할때 오른쪽 부터 사용해야된다.
+void Function(int x, int y,int z=20)
+{
+	//std::cout << x<< std::endl;
+	//std::cout << y << std::endl;
+	//std::cout << z << std::endl;
+}
 int main()
 {
-	Object cube;
 
-	Monster orc;
+	//x=10;y=20;
+	//기본 매개변수는 함수를 호출할때 매개변수에 값이 있기 대문에 인수를 넣어주지 않아도 함수를 호출할 수 있습니다. 
+	// 매개변수 순서가 함수를 호출할 때는 왼쪽에서 부터 오른쪽으로 값이 저장됩니다. 
+	//기본 매개 변수를 왼쪽부터 정의하게 되면 매개변수 어디를 정장해야되는지 모르는 상황이 발생합니다. 
+	Function(100,100);
+	//bool : 1바이트 크기의 자료형으로 true와 false 값만 저장할수 있습니다. 
+	bool condition = true;
 
+	// 변수를 저장할 때 자료형 명시적으로 입력했습니다. 
+	auto value = "dd";
 
+	//게임이 종료될 때(false),게임이 실행될 때(true)
 
-	//std::cout << cube.x << std::endl;
-	//std::cout << cube.y << std::endl;
-	//std::cout << cube.z << std::endl;
-
-
-	// cube의 체력을 0 이하로 만들면 while 문이 종료 되도록 설정합니다. 
-	// 스페이스를 데이미가 10씩 들어가도록 설정합니다.
-	while (1)
+	/*while (condition)
 	{
-		/*if (GetAsyncKeyState(VK_SPACE))
-		{
-			Sleep(50);
-			cube.HP -= 10;
-			cube.Health();
-		}
-		if (cube.HP <= 0)
-		{
-			break;
-		}*/
-
+		std::cout << value << std::endl;
 		if (GetAsyncKeyState(VK_SPACE))
 		{
-			orc.Death();
-			//orc.Breaking();
-			Sleep(100);
-
-
-
+			condition = false;
 		}
+	}*/
 
+	//회문 판별
 
+	//eye (회문입니다.)
+	
+	
+
+	//[e]<- [y]-> [e]
+	//문자가 서로 같으면 임시 변수를 증가 시킵니다. 
+	//그리고 최종적으로임시 변수와 내가 선언한 문자열의 크기 -1/2랑 같다면 회문입니다. 
+
+	//league (회문이 아닙니다.)
+
+	int result = 0;
+
+	char array[] = { "level" };
+
+	//std::cout << array[0] << std::endl; //l
+	//std::cout << array[1] << std::endl; //e
+	//std::cout << array[2] << std::endl; //v
+	//std::cout << array[3] << std::endl; //e
+	//std::cout << array[4] << std::endl; //l
+
+	
+
+	//sizeof(array)
+	for (int i = 0; i < (sizeof(array) - 1) / 2; i++)
+	{
+		
+		if (array[i] ==array[sizeof(array)-2-i])
+		{
+			result++;
+		}
+		
+	}
+	if (result == sizeof(array)-1/2)
+	{
+		std::cout << "회문입니다" << std::endl;
+	}
+	else
+	{
+		std::cout << "회문이 아님니다." << std::endl;
 	}
 }
