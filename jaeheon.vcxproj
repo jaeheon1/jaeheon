@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="2022.5.11.h" />
     <ClInclude Include="2022.5.12.h" />
+    <ClInclude Include="2202.5.13.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
