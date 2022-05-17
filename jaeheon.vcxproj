@@ -139,12 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="jaeheon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2022.5.11.h" />
     <ClInclude Include="2022.5.12.h" />
-    <ClInclude Include="2202.5.13.h" />
+    <ClInclude Include="2022.5.16.h" />
+    <ClInclude Include="2022.5.13.h" />
+    <ClInclude Include="Book.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

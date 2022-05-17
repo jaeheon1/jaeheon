@@ -1,153 +1,120 @@
 ﻿#include<iostream>
-#include<conio.h>
-#include<windows.h>
+#include"Book.h"
 
 
 
-//채널이 100이 되면 다시 0번으로 돌아가게 설정합니다.
-//스페이스를 누를 때 RemoteControl_UP() 함수가 호출 되도록 합시다
 
-class TV
+
+class Person
 {
 public:
-	void RemoteControl_UP()
+	//생성자 
+	Person()
 	{
-		
-		if(channel<=10)
-		{
-			channel++;
-			
-			if (channel > 10)
-			{
-				channel = 0;
-				
-			}
-			
-		}
-		std::cout << "channel:" << channel << "번" << std::endl;
+		std::cout << "Create Person" << std::endl;
 	}
 
-private:
-	int channel=0;
+	~Person()
+	{
+		std::cout << "Delete Person" << std::endl;
+	}
 
-	int volume=0;
-};
+	void Info()
+	{
+		std::cout << age << std::endl;
+		std::cout << weight << std::endl;
+		std::cout << name << std::endl;
+	}
 
-class Transportation
-{
-protected:
+
+
+
+
+	int age;
+	float weight;
 	std::string name;
 
-	float speed = 0.0;
-	int wheel = 0;
-	int handle = 0;
-};
-
-class car :public Transportation
-{
-public:
-	void info()
-	{
-		speed = 100;
-		wheel = 4;
-		handle = 1;
-		name = "sonata";
-		std::cout << "name:" << name << std::endl;
-		std::cout << "speed:" << speed << std::endl;
-		std::cout << "wheel:" << wheel << std::endl;
-		std::cout << "handle:" << handle << std::endl;
-	}
-	
 
 };
-class airplane :public Transportation
-{
-public:
-	void info1()
-	{
-		speed = 400;
-		wheel = 3;
-		handle = 1;
-		name = "KF15";
-		std::cout << "name:" << name << std::endl;
-		std::cout << "speed:" << speed << std::endl;
-		std::cout << "wheel:" << wheel << std::endl;
-		std::cout << "handle:" << handle << std::endl;
-
-
-	}
-
-};
-
 
 
 int main()
 {
-	//힙
-	//4byte 4byte 4byte 4byte 
-	//[   ]  [   ]   [    ]   [   ] 
-	//   0     1        2       3
 
-	
+	Book naver;
 
+	naver.Read();
 
-	//new는 메모리를 동적으로 할당하는 연산자 입니다. 
-	// 힙 영역에 메모리가 4바이트 저장이되고 10이라는 값을 저장합니다. 
-	int* ptr = new int(10);
-	*ptr = 100;
-	std::cout << "ptr이 가리키는 값은 :" << *ptr << std::endl;
-
-    // 스택 
-	//  4byte
-	//[ [ptr]              ]
-	//
-	//힙 
-	//[   [][][][][][][]][][][]         ]
-
-
-
-	//추상화 
-	/*TV Lg_TV;
-
-	Lg_TV.RemoteControl_UP();
-
-	airplane A10;
-
-	car B10;
+	naver.Write();
 
 
 
 
 
-	while (1)
+	//객체 할당
+	/*Person* man = new Person();
+
+	std::cout << sizeof(Person) << std::endl;
+
+	Person girl;
+	Person 이라는 객체는 생성이 되었다? ㅇ  
+
+	man->age = 20;
+	man->weight = 70.5;
+	man->name = "kimGeumsoo";
+	man->Info();
+
+	delete man;
+	*/
+
+
+
+	// 동적 할당 배열
+	    /*  //4byte *5 =20 byte
+	          //[] [] [] []
+	          //[] [] [] []
+	          //[] [] [] []
+	int* ptr = new int[3];
+
+	ptr[0] = 1000;
+	ptr[1] = 2000;
+	ptr[2] = 3000;
+
+	std::cout << sizeof(ptr) << std::endl;
+
+	for (int i = 0; i < 3;i++)
 	{
-		if (GetAsyncKeyState(VK_RIGHT))
-		{
-			B10.info();
-			Sleep(100);
-		}
-		if (GetAsyncKeyState(VK_LEFT))
-		{
-			    A10.info1();
+		std::cout << ptr[i] << std::endl;
+		std::cout << "ptr변수가 가리키는 주소" << &ptr[i] << std::endl;
+	}
 
-				std::cout << std::endl;
+	//동적 할당을 했을 때 배열 형태로 메로리를 할당하게 되면 메모리를 헤제할 때 배열 형태로 해제해주어야합니다. 
 
-				
 
-				Sleep(100);
+	delete []ptr;
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << ptr[i] << std::endl;
+		std::cout << "ptr변수가 가리키는 주소" << &ptr[i] << std::endl;
+	}
 
-		}
-		if (GetAsyncKeyState(VK_SPACE))
-		{
-			Lg_TV.RemoteControl_UP();
-			Sleep(100);
-		}
-	}*/
+	// 스택       힙
+	//ptr-------> 
+	//이미 해제된 메모리를 가리키는 포인터 입니다.*/
 
-	
-	
+
+
+	//참조 연산자 
+	/*int variable = 300;
+	int value = 10;
+	int& ref = value;
+	ref = variable;
+	ref = 1000;
+
+	std::cout << "value의 값은 : "<<value << std::endl;
+	std::cout << variable << std::endl;
+	std::cout << "ref의 값은 :"<<ref << std::endl;*/
 
 
 	return 0;
-
 }
