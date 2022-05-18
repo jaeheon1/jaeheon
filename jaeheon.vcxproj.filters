@@ -24,6 +24,9 @@
     <ClCompile Include="Book.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2022.5.11.h">
@@ -39,6 +42,12 @@
       <Filter>Class Data</Filter>
     </ClInclude>
     <ClInclude Include="Book.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.5.17.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -141,13 +141,16 @@
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="jaeheon.cpp" />
+    <ClCompile Include="Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2022.5.11.h" />
     <ClInclude Include="2022.5.12.h" />
     <ClInclude Include="2022.5.16.h" />
     <ClInclude Include="2022.5.13.h" />
+    <ClInclude Include="2022.5.17.h" />
     <ClInclude Include="Book.h" />
+    <ClInclude Include="Model.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
