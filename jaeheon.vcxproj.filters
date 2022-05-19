@@ -50,5 +50,8 @@
     <ClInclude Include="Model.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="2022.5.18.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

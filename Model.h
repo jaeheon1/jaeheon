@@ -21,18 +21,18 @@ public:
 	}
 	~Model()
 	{
-		//동적 할당 메모리를 해제 해야되는데 
+		//동적 할당 메모리를 해제
 		
 		delete m_size;
 
 		std::cout << "객체가 소멸되었습니다." <<m_name<< std::endl;
 	}
 
-	Model(const Model &value)
+	Model(const Model &model)
 	{
-		m_size=new int();
-		m_mesh=value.m_mesh;
-		m_name=value.m_name;
+		m_size=new int(*model.m_size);//[0] [1] [2] [3]4 byte (10)
+		m_mesh=model.m_mesh;
+		m_name=model.m_name;
 
 		std::cout << "복사 생성자 호출" << std::endl;
 	}
