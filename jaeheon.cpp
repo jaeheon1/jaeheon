@@ -1,10 +1,10 @@
 ﻿#include<iostream>
-
+#include"Color.h"
 using namespace std;
 
 
 
-namespace A_SPACE
+/*namespace A_SPACE
 {
 	int value = 100;
 
@@ -36,10 +36,12 @@ namespace B_SPACE
 //초기화 맴버 리스트를 이용해서 초기화하면 됩니다. 
 using namespace B_SPACE;
 
-using namespace A_SPACE;
+using namespace A_SPACE;*/
 
 int main()
 {
+	Color color( 1,2, 3);
+	
 	// 범위 기반 반복문
 	/* 시작점과 끝점을 알려주지 않아도 처음부터 끝까지 순회를 해주는 반복문 입니다.
 	//                 0    1    2    3    4
@@ -74,5 +76,7 @@ int main()
 
 	cout << B_SPACE::B_COPY_SPACE::value;
 	*/
+
+
 	return 0;
 }
