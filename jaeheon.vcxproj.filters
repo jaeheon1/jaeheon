@@ -30,6 +30,9 @@
     <ClCompile Include="Color.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2022.5.11.h">
@@ -57,6 +60,15 @@
       <Filter>Class Data</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2022.5.19.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Animal.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

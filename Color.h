@@ -25,14 +25,14 @@ public:
 
 	Color(int black, int white, int blue):m_black(black),m_white(white),m_blue(blue)
 	{
-		cout << " black =" << black << endl;
-		cout << " white =" << white << endl;
-		cout << " blue  =" << blue << endl;
+		cout << " Black =" << black << endl;
+		cout << " White =" << white << endl;
+		cout << " Blue  =" << blue << endl;
 	}
-	~Color()
-	{
+	//~Color()
+	
 
-	}
+	
 
 
 
