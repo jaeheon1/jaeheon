@@ -1,115 +1,116 @@
 ﻿#include<iostream>
-#include"Shape.h"
-
+#include"Object.h"
+#include<vector>
+#include<conio.h>
+#include<windows.h>
 using namespace std;
 
-class Animal
-{
-public:
-	void Sound();
-	void Sleeping();
-	
-private:
-	int m_size;
-	float m_weight;
-	std::string m_name;
 
-};
-
-void Animal::Sound()
-{
-	cout << "Sound" << endl;
-}
-
-void Animal::Sleeping()
-{
-	cout << "Sleeping" << endl;
-}
-
-// 인라인 함수
-
-/*
-inline void Function(int x)
-{
-	std::cout << "x의 값" <<x<<std::endl;
-}
-*/
 
 
 int main()
 {
-	//인라인 함수 
-
-	/*
-	Function(1);
-	*/
+	//this 포인터
+	/*Object computer(10,20,30);
+	Object Phone(5, 10, 15);
 
 
-
-
-	//클래스 외부 함수
 	
-	/*Animal cat;
-	cat.Sleeping();
-	cat.Sound();
-	*/
 
-	//맴버 초기화 리스트
+	computer.Address();
+	Phone.Address();*/
+	
 
-	/*Shape rectangle(10000,"Circle");
+	//standard template library 
 
-	//입력을 받고 과잉수인지 판별*/
+	//반복자
 
-	//과잉수 구하기
+	// 컨테이너에 저장된 원소를 순회하고 접근하는 스마트 포인터 입니다. 
 
-	/*int value;
-	int result=0;
-	cin >> value;
+	//vecter container
 
-	for (int i = 1; i < value; i++)
+	// 컨테이너에 int () 선언 
+	//std::vector<int> value = { 10,20,30,40,51,2,3,4,45,5};
+	std::vector<std::string>arrow = { "←","→","↑","↓" };
+	//     vector
+	// 	   stack------->heap
+	// 	   벡터는 하나가 없어져도 정렬이됨
+	// 	   배열의 장점 
+	// 	   0     1    2        4     접근:(0)1
+	// 	   [1]  [2]  [3]  []  [5]   삽입과 삭제가 어려움 :0(n)
+
+
+	 
+	
+	
+	//[10,50           ] <-push_back
+
+	//value.push_back(10);
+	//value.push_back(20);
+	//value.push_back(30);
+	//value.push_back(40);
+	//value.push_back(50);
+
+	// [10]  [20]  [30]  [40]  [50]
+
+	/*for (auto Element : value)
 	{
-		if (value % i == 0)
-		{
-			result += i;
-		}
+		std::cout << Element << std::endl;
 	}
-	if (result > value)
-	{
-		cout << "과잉수" << endl;
+	value.pop_back();
 
-	}
-	else
+	std::cout << value.size()<<std::endl;
+	// [10]  [20]  [30]  [40]  pop back을 할수록 하나씩 줄어든다. 
+	for (auto Element : value)
 	{
-		cout << "부족수" << endl;
+		std::cout << Element << std::endl;
 	}
-	if (result == value)
+
+	for (int i = 0; i < value.size(); i++)
 	{
-		cout << "완전수"<<endl;
+		std::cout <<&value[i] << std::endl;
 	}*/
 
-
-	//부족수
-	/*
-	int value;
-	int result=0;
-
-	cin >> value;
-
-	for (int i =1; i <= value; i++)
+	while (1)
 	{
-		if (value % i == 0)
+		//[] [] [] [] []
+		for (auto Element : arrow)
 		{
-			result += i;
+			std::cout << Element << "  ";
 		}
+		int key = _getch();
+		if (arrow.size() == 0)
+		{
+			break;
+		}
+		system("cls");
+		switch (key)
+		{
+		case 32:
+			arrow.pop_back();
+			break;
+		case 77:
+			arrow.push_back("←");
+			break;
+		case 80:
+			arrow.push_back("→");
+			break;
+		}
+		
+
+
+		
+
 	}
-	if (result < value*2)
-	{
-		cout << "부족수" << endl;
-	}
-	else
-	{
-		cout << "부족수가 아닙니다." << endl;
-	}
-	*/
+
+
+
+	//std::cout << value[1] << std::endl;
+
+	//배열 
+	//컴파일 시점에 배열의 크기가 정해집니다 
+	// [10] [5] [7] [8] [1]
+	// [/] [/] [/] [/]
+	
 	return 0;
 }
