@@ -86,14 +86,16 @@ int main()
 		system("cls");
 		switch (key)
 		{
-		case 32:
-			arrow.pop_back();
+		case 72:
+			arrow.push_back("↑");
 			break;
-		case 77:
+		case 75:
 			arrow.push_back("←");
 			break;
-		case 80:
+		case 77:
 			arrow.push_back("→");
+			break;
+		case 80:arrow.push_back("↓");
 			break;
 		}
 		
