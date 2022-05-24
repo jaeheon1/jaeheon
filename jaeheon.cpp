@@ -3,35 +3,50 @@
 #include<vector>
 #include<conio.h>
 #include<windows.h>
+#include<time.h>
+
 using namespace std;
 
+std::vector<std::string>arrow;
+
+int life =10;
 
 
+
+void nextstage()
+{
+	int value = 0;
+
+	for (int i = 0; i < 5; i++)
+	{
+		value = rand() % 4;
+		switch (value)
+		{
+		case 0:
+			arrow.push_back("←");
+			break;
+		case 1:arrow.push_back("→");
+			break;
+		case 2:arrow.push_back("↑");
+			break;
+		case 3:arrow.push_back("↓");
+			break;
+		case 4:arrow.push_back("↓");
+			break;
+		}
+
+	}
+}
 
 int main()
 {
-	//this 포인터
-	/*Object computer(10,20,30);
-	Object Phone(5, 10, 15);
-
-
-	
-
-	computer.Address();
-	Phone.Address();*/
-	
-
-	//standard template library 
-
-	//반복자
-
-	// 컨테이너에 저장된 원소를 순회하고 접근하는 스마트 포인터 입니다. 
-
-	//vecter container
+	static int stage = 5;
 
 	// 컨테이너에 int () 선언 
 	//std::vector<int> value = { 10,20,30,40,51,2,3,4,45,5};
-	std::vector<std::string>arrow = { "←","→","↑","↓" };
+	//std::vector<std::string>arrow = { "←","→","↑","↓" };
+	srand((unsigned int)time(NULL));
+
 	//     vector
 	// 	   stack------->heap
 	// 	   벡터는 하나가 없어져도 정렬이됨
@@ -40,18 +55,13 @@ int main()
 	// 	   [1]  [2]  [3]  []  [5]   삽입과 삭제가 어려움 :0(n)
 
 
-	 
-	
-	
-	//[10,50           ] <-push_back
-
 	//value.push_back(10);
 	//value.push_back(20);
 	//value.push_back(30);
 	//value.push_back(40);
 	//value.push_back(50);
 
-	// [10]  [20]  [30]  [40]  [50]
+
 
 	/*for (auto Element : value)
 	{
@@ -71,35 +81,87 @@ int main()
 		std::cout <<&value[i] << std::endl;
 	}*/
 
-	while (1)
+	nextstage();
+	int value = 0;
+	
+	std::vector<std::string>arrow;
+
+
+	for (int i = 0; i < 5; i++)
 	{
-		//[] [] [] [] []
-		for (auto Element : arrow)
+		value = rand() % 4;
+		switch (value)
 		{
-			std::cout << Element << "  ";
-		}
-		int key = _getch();
-		if (arrow.size() == 0)
-		{
-			break;
-		}
-		system("cls");
-		switch (key)
-		{
-		case 72:
-			arrow.push_back("↑");
-			break;
-		case 75:
+		case 0:
 			arrow.push_back("←");
 			break;
-		case 77:
-			arrow.push_back("→");
+		case 1:arrow.push_back("→");
 			break;
-		case 80:arrow.push_back("↓");
+		case 2:arrow.push_back("↑");
 			break;
+		case 3:arrow.push_back("↓");
+			break;
+			
+		}
+
+	}
+	while (1)
+	{
+		//vector 컨테이너에 5개의 데이터를 저장합니다. 
+		// 랜덤으로 "←","→","↑","↓" 데이터를 vector 컨데이너에 넣어줍니다.
+		// 현재 인덱스에서 내가 원하는 화살표가나타났을대 해당 화살표를 누르면 삭제가 되로독 설정합니다.
+		//vector 컨테이너의 크기가 8이면 게임이 종료되도록합니다.
+		int life = 10;
+		std::cout << "life: " <<life<< std::endl;
+		srand((unsigned int)time(NULL));
+		for (auto Element : arrow)
+		{
+			
+			std::cout << Element << "  ";
 		}
 		
 
+		int key = _getch();
+		if (arrow.size() == 0)
+		{
+			stage++;
+			nextstage();
+		}
+		system("cls");
+		
+		switch (key)
+		{
+		case 72:
+			if (arrow.back() == "↑")
+				arrow.pop_back();
+			else life--;
+			break;
+		case 75:if (arrow.back() == "←")
+			arrow.pop_back();
+			   else life--;
+			break;
+		case 77:if (arrow.back() == "→")
+			arrow.pop_back();
+			   else life--;
+			break;
+		case 80:if (arrow.back() == "↓")
+			arrow.pop_back();
+			   else life--;
+			break;
+		case 32:
+			arrow.pop_back();
+			break;
+		}
+		if (life == 0)
+		{
+			system("cls");
+			std::cout<<"게임을 완료하지 못해서 종료하였습니다.";
+	     }
+		if (stage == 10)
+		{
+			system("cls");
+			std::cout << "게임을 정상적으로 완료하였습니다.";
+		}
 
 		
 
