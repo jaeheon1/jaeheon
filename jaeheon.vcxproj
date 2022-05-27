@@ -158,6 +158,7 @@
     <ClInclude Include="2022.5.23.h" />
     <ClInclude Include="2022.5.24.h" />
     <ClInclude Include="2022.5.25.h" />
+    <ClInclude Include="2022.5.261.h" />
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="Color.h" />
