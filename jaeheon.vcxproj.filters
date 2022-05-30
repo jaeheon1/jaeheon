@@ -92,5 +92,8 @@
     <ClInclude Include="2022.5.261.h">
       <Filter>Class Data</Filter>
     </ClInclude>
+    <ClInclude Include="2022.5.27.h">
+      <Filter>Class Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

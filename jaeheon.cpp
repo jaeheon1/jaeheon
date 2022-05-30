@@ -1,83 +1,172 @@
 ﻿#include<iostream>
-#include<map>
+#include<set>
 #include<string>
 using namespace std;
+/*
+void Function(int x)
+{
+	std::cout << x << std::endl;
+}
+void Function(int x, int y)
+{
+	std::cout << x << "," << y << std::endl;
+}
+
+class Phone
+{
+public:
+	Phone()
+	{
+		std::cout << "따르릉~" << std::endl;
+	}
+	Phone(int x, int y)
+	{
+		call = x;
+		size = y;
+		std::cout << call << std::endl;
+		std::cout << size << std::endl;
+	}
+
+
+
+private:
+	int call;
+	int size;
+
+
+
+};
+*/
+/*
+void Function(char x)
+{
+	std::cout << x << std::endl;
+
+}
+int Function(double x)
+{
+	return x;
+}
+double Function()
+{
+
+}
+//함수의 오버로딩으로 반환형은 고려가 되지 않는다.
+
+*/
+
 int main()
 {
-	//map container 
+	//set
+
+	//std::map ->key와 value 
+	//key 을 활용해서 데이터를 확인합니다.+
+	//set::set->key
+	//key 값이 중복이 허용되지 않습니다.
+	// insert 원소가 자동으로 정렬됩니다. 
+
 	/*
-	// 노드 기반의 컨테이너 구조입니다. 
-	// [key] [value]
-	//name          price 
-	//[sword] -----[1000]
-	//[armor] -----[300]
-	//[sword]x -----[value] key값에 중복이 허용되지 않습니다.
-	//[Gloves] -----[1000]
-	//[key] -----[value]
+	std::set<int>data;
+	std::set<int>::iterator iter;
+	data.insert(10);
+	data.insert(80);
+	data.insert(40);
+	data.insert(20);
+	data.insert(60);
 
-	//게임 내에 특정한 값을 넣기 위해서 map에 저장되어 있는 key으로 검색을 해주시면 됩니다.
-	//map은 어떤 구조로 되어있나요 
-	// 레드 블랙 트리 구조로 되어 있습니다. 
-	//레드 블랙 트리 :자가 균형 이진 탐색 트리로써 삽입과 삭제가 일어나는 경우 자동으로 그 높이를 작게 유지 하는 
-	//이유는 연산 과정에서 트리의 높이가 한쪽으로 치우치는 것을 방지 하지 위해서 입니다. 
-	*/
-
-	//map 
-	/*
-	std::map<std::string, int>data;
-	                         //아이템 이름 <->아이템의 가격
-	data.insert(std::make_pair("sword", 1000));
-	data.insert(std::make_pair("armar", 500));
-	data.insert(std::make_pair("shoes", 750));
-
-	//         [shoes]
-	//[armor]            [sword]
-
-	for (auto iter = data.begin(); iter != data.end(); iter++)
+	for ( iter = data.begin(); iter != data.end(); iter++)
 	{
-		std::cout <<"Key : "<< iter->first<<" ";
-		std::cout <<"Value : "<< iter->second << std::endl;
+
+		std::cout << *iter << std::endl;
 	}
-	data.erase("shoes");
-	//std::cout << data.find("shoes")->second << std::endl;
-	std::cout << data.find("sword")->second << std::endl;
-	std::cout << data.find("armar")->second << std::endl;
+
+	iter = data.find(10);
+
+	if (iter != data.end())
+	{
+		std::cout <<"데이터가 존재합니다"<< std::endl;
+	}
+	else
+	{
+		std::cout << "데이터가 없습니다." << std::endl;
+	}
 	*/
 
-	//알파벳 갯수
-	//각 알파벳이 단어에 몇개가 포함되어 있는 지 구하는 프로그램입니다. 
+	//** 실제로 개발하다보면 OOP가 감이 잘 안옵니다.
 
-	//예제 입력 -> academy
-	//            a b c d e  f g h i j  k l n m o  p q r s t  u v w x y z 
-	//예제 출력 -> 2 0 1 1 1  0 0 0 0 0  0 0 0 1 0  0 0 0 0 0  0 0 0 0 0 0  
+	//다형성 
+	//1.추상화 2.상속 3. 캡슐화 4 다형성 
+	// 동물 
+	// 강아지     고양이   오리 
 
+	//Sound()  Sound()   Sound()
+	//[멍멍]    [냐옹]       [꽥꽥]
+
+
+
+
+	//함수의 오버로딩 
+	//다른 매개변수들을 가진 같은 이름의 함수를 여러개 정의 할수 있습니다.
 	
-	std::string value;
+	//Phone IPhone(10, 20);
+
+
+	// O X 퀴즈 
+	//"OXOXOXOO"와 같은 오엑스 퀴즈의 겨로가가 있스빈다. 
+	// ㅇ 는 무제를 맞춘것이고,x는 틀린 것입니다.
+	// 문제를 맞는 경우는 그 문제의 점수는 그 문제까지 연속된 O 의 개수가 됩니다. 
+	//"OOXXOXXOOO"=1+2+0+0+1+0+0+1+1+3
+
+	// 입력받을 문자배열을 선언하고 
+	//원하는 OX를 입력하세요
+
+	/*
+	char quiz[10];
+	std::string input;
+	int sum = 0;
 	int result = 0;
 
-	std::getline(std::cin, value);
+	cin >> quiz;
 
-	//std::cout << value.length();
-
-	
-
-	
-
-	for (int i = 97; i <= 122; i++)
+	for (int i = 0; i < quiz[i]; i++)
 	{
-		for (int j = 0; j < value.length(); j++)
+		if (i == ' O')
+			sum++;
+		else
 		{
-			if (value[j] == (char)i)
-			{
-				result++;
-			}
+			sum == 1;
 		}
-		std::cout << result << std::endl;
+		sum += result;
+	}
+	std::cout << "합은 :" << sum <<result << endl;
+	*/
 
-		result = 0;
+	/*
+	int result = 0; 
+	std::string input; 
+	int count = 1;
+	std::getline(std::cin, input);
 
+	for (int i = 0; i < input.length(); i++)
+	{
+		if (input[i]== 'O')
+		{
+			result += count;
+			count++;
+		}
+		else if(input[i]=='X')
+		{
+			count = 1;
+		}
+		
 	}
 
+	std::cout << "합은 :" << result<< std::endl;
+	*/
+// 비공개인데 나 자신 이외에 다른 사람들은 프로젝트를 볼 수 없다. 
+
+
+
 	return 0;
+
 }
-	
