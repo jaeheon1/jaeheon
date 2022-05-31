@@ -1,172 +1,173 @@
 ﻿#include<iostream>
-#include<set>
 #include<string>
-using namespace std;
-/*
-void Function(int x)
-{
-	std::cout << x << std::endl;
-}
-void Function(int x, int y)
-{
-	std::cout << x << "," << y << std::endl;
-}
+using namespace std; 
 
-class Phone
+//일반 가상함수
+class Pen
+{
+	//순수 가상함수
+	virtual void Drawing()=0;
+
+};
+class Circle :public Pen
 {
 public:
-	Phone()
+	void Drawing()
 	{
-		std::cout << "따르릉~" << std::endl;
+		cout << "동그라미" << endl; 
 	}
-	Phone(int x, int y)
+};
+class Star :public Pen
+{
+public:
+	void Drawing()
 	{
-		call = x;
-		size = y;
-		std::cout << call << std::endl;
-		std::cout << size << std::endl;
+		cout << "별" << endl;
+	}
+};
+class Rectangle :public Pen
+{
+public:
+	void Drawing()
+	{
+		cout << "세모" << endl;
+	}
+
+};
+
+
+//일반 가상함수
+class Animal
+{
+public:
+	virtual void Sound()
+	{
+		cout << "울음소리~" << endl;
 	}
 
 
 
 private:
-	int call;
-	int size;
-
-
+	
+	int mouth;
+int eye;
+int leg;
 
 };
-*/
-/*
-void Function(char x)
+class dog :public Animal
 {
-	std::cout << x << std::endl;
-
-}
-int Function(double x)
+public:
+	//가상함수(virtual)
+	void Sound()
+	{
+		cout << "멍멍" << endl;
+	}
+};
+class cat :public Animal
 {
-	return x;
-}
-double Function()
+public:
+	void Sound()
+	{
+		cout << "냐옹~" << endl;
+	}
+};
+class duck :public Animal
 {
+public:
+	void Sound()
+	{
+		cout << "꽥꽥~" << endl;
+	}
+};
 
-}
-//함수의 오버로딩으로 반환형은 고려가 되지 않는다.
 
-*/
+
 
 int main()
 {
-	//set
+	/*
+	//생성자 가능하고 , 함수에도 오버로딩 가능했어요.
+	// 같은 이름의 함수를 여러 개 정의 할 수 있어요. (매개 변수 자료형이나 갯수에 따라 함수의 오버로딩을 할수 있었어요. )
 
-	//std::map ->key와 value 
-	//key 을 활용해서 데이터를 확인합니다.+
-	//set::set->key
-	//key 값이 중복이 허용되지 않습니다.
-	// insert 원소가 자동으로 정렬됩니다. 
+	//Function(int x) ----- > 정수
+	//Function(char x)------문자
+	//Function(double x)   ----실수
+	*/
+	//다형성 
+
+	//[] animal 
+
+	// [] [] []
+
+	// dog cat duck 
+
+	//가상함수 
+	/*
+	Animal *animal=new Animal;
+	dog* ldog = new dog;
+	duck* nduck = new duck;
+	animal->Sound();
+	animal = ldog;
+	animal->Sound();
+	animal = nduck;
+	animal->Sound();
+
+	cout << &animal << endl;
+	//컴파일러는 함수를 호출할 때 복잡한 과정이 있기 때문에 함수를 호출하는 코드는
+	//컴파일 시점에 고정된 메모리 주소로 변환시킵니다.(정적 바인딩)
+
+	//정적 바인딩: 컴파일 시점에 함수를 결정합니다.
+	//동적 바인딩 :런타임 시점에 함수를 결정합니다.
+	*/
+
+	//순수 가상 함수
+	//하위 클래스 반드시 재정의 되어야 하는 맴버 함수 
 
 	/*
-	std::set<int>data;
-	std::set<int>::iterator iter;
-	data.insert(10);
-	data.insert(80);
-	data.insert(40);
-	data.insert(20);
-	data.insert(60);
+	Star* star = new Star;
+	star->Drawing();
 
-	for ( iter = data.begin(); iter != data.end(); iter++)
+	Rectangle *rectangle = new Rectangle;
+	rectangle->Drawing();
+
+	Circle* circle = new Circle;
+	circle->Drawing();
+	*/
+
+
+	//프로그래머스 2~3 단계(회사 코딩테스트난이도는 2~3) (4 단계)
+	//완벽한 문자열 판별하기
+
+	//문자를 입력합니다.
+	//문자를 입력했을때 숫자가 들어가게 되면 ex)완벽한 문자열이 아닙니다. 
+	//문자를 입력 했을때 숫자가 들어가지 않으면 ex>완벽한 문자열입니다.
+
+
+
+	std::string str;
+	std::getline(std::cin, str);
+	int a = 0;
+	int count = 0;
+
+	for (int i = 0; i < str.length(); i++)
 	{
-
-		std::cout << *iter << std::endl;
+		if (str[i]> char(48) && str[i]< char(57))
+		{
+			
+			count++;
+        }
+		
 	}
-
-	iter = data.find(10);
-
-	if (iter != data.end())
+	if (count > 0)
 	{
-		std::cout <<"데이터가 존재합니다"<< std::endl;
+		cout << "완벽한 문자열이 아닙니다" << endl;
 	}
 	else
 	{
-		std::cout << "데이터가 없습니다." << std::endl;
+		cout << "완벽한 문자열이 맞습니다" << endl;
 	}
-	*/
-
-	//** 실제로 개발하다보면 OOP가 감이 잘 안옵니다.
-
-	//다형성 
-	//1.추상화 2.상속 3. 캡슐화 4 다형성 
-	// 동물 
-	// 강아지     고양이   오리 
-
-	//Sound()  Sound()   Sound()
-	//[멍멍]    [냐옹]       [꽥꽥]
-
-
-
-
-	//함수의 오버로딩 
-	//다른 매개변수들을 가진 같은 이름의 함수를 여러개 정의 할수 있습니다.
 	
-	//Phone IPhone(10, 20);
-
-
-	// O X 퀴즈 
-	//"OXOXOXOO"와 같은 오엑스 퀴즈의 겨로가가 있스빈다. 
-	// ㅇ 는 무제를 맞춘것이고,x는 틀린 것입니다.
-	// 문제를 맞는 경우는 그 문제의 점수는 그 문제까지 연속된 O 의 개수가 됩니다. 
-	//"OOXXOXXOOO"=1+2+0+0+1+0+0+1+1+3
-
-	// 입력받을 문자배열을 선언하고 
-	//원하는 OX를 입력하세요
-
-	/*
-	char quiz[10];
-	std::string input;
-	int sum = 0;
-	int result = 0;
-
-	cin >> quiz;
-
-	for (int i = 0; i < quiz[i]; i++)
-	{
-		if (i == ' O')
-			sum++;
-		else
-		{
-			sum == 1;
-		}
-		sum += result;
-	}
-	std::cout << "합은 :" << sum <<result << endl;
-	*/
-
-	/*
-	int result = 0; 
-	std::string input; 
-	int count = 1;
-	std::getline(std::cin, input);
-
-	for (int i = 0; i < input.length(); i++)
-	{
-		if (input[i]== 'O')
-		{
-			result += count;
-			count++;
-		}
-		else if(input[i]=='X')
-		{
-			count = 1;
-		}
-		
-	}
-
-	std::cout << "합은 :" << result<< std::endl;
-	*/
-// 비공개인데 나 자신 이외에 다른 사람들은 프로젝트를 볼 수 없다. 
-
 
 
 	return 0;
-
 }
