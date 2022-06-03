@@ -3,26 +3,53 @@
 #include<conio.h>
 #include<windows.h>
 #include<ctime>
+#include<time.h>
+#define BufferWidth 88
+#define BufferHeight 40
+
+int move=1;
+static int ScreenIndex;
+static HANDLE Screen[2];
+
 
 using namespace std;
 
-static int ScreenIndex;
-static HANDLE Screen[2];
-int FPS;
-clock_t CurTime, OldTime;
-char *FPS_TEXT;
 
+
+struct obj
+{
+	int x; 
+	int y; 
+	const char* shape;
+};
+
+obj * Player;
+obj * Booster;
 void Screen_Init()
 {
 	CONSOLE_CURSOR_INFO cursor;
+	COORD size = { BufferWidth,BufferHeight };
+	SMALL_RECT rect = { 0,0,BufferWidth - 1,BufferHeight - 1 };
 
 	//화면 2개를 생성합니다.
-	Screen[0] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
-	Screen[1] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
+	Screen[0] = CreateConsoleScreenBuffer
+	(
+		GENERIC_READ | GENERIC_WRITE,FILE_SHARE_READ | FILE_SHARE_WRITE , NULL ,CONSOLE_TEXTMODE_BUFFER ,NULL
+	);
+	SetConsoleScreenBufferSize(Screen[0], size);
+	SetConsoleWindowInfo(Screen[0], TRUE, &rect);
 
+
+	Screen[1] = CreateConsoleScreenBuffer
+	(
+		GENERIC_READ | GENERIC_WRITE,FILE_SHARE_READ | FILE_SHARE_WRITE , NULL ,CONSOLE_TEXTMODE_BUFFER ,NULL
+	);
+	SetConsoleScreenBufferSize(Screen[1], size);
+	SetConsoleWindowInfo(Screen[1], TRUE, &rect);
 
 		//커서 숨기기 
 		cursor.dwSize = 1;
+		cursor.bVisible = false;
 		SetConsoleCursorInfo(Screen[0], &cursor);
 		SetConsoleCursorInfo(Screen[1], &cursor);
 
@@ -38,7 +65,7 @@ void ScreenClear()
 {
 	COORD Coord = { 0,0 };
     DWORD dw;
-	FillConsoleOutputCharacter(Screen[ScreenIndex], ' ', 80 * 25, Coord, &dw);
+	FillConsoleOutputCharacter(Screen[ScreenIndex], ' ', BufferWidth * BufferHeight, Coord, &dw);
 }
 void ScreenRelese()
 {
@@ -50,27 +77,11 @@ void ScreenPrint(int x, int y, const char* string)
 {
 	DWORD dw;
 	COORD CursorPosition = { x,y };
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),CursorPosition);
+	SetConsoleCursorPosition(Screen[ScreenIndex],CursorPosition);
 	WriteFile(Screen[ScreenIndex], string, strlen(string), &dw, NULL);
 
 }
-void Render()
-{
-	ScreenClear();
 
-	if (CurTime - OldTime >= 1000)
-	{
-		sprintf(FPS_TEXT, "FPS: %d", FPS);
-		OldTime = CurTime;
-		FPS = 0;
-	}
-	FPS++;
-	//ScreenPrint(0, 0, FPS_TEXT);
-	ScreenFlipping();
-}
-void Release() {
-	delete[] FPS_TEXT;
-}
 
 
 
@@ -84,7 +95,85 @@ void Release() {
 
 }*/
 
-int x = 5, y = 5;
+//int x = 5, y = 5;
+
+void PlayerInitialize()
+{
+	Player = (obj*)malloc(sizeof(obj));
+	Player->x = 5;
+	Player->y = 5;
+	Player->shape = "◎";
+
+}
+
+void BoosterInitialize()
+{
+	Booster = (obj*)malloc(sizeof(obj));
+
+	Booster->x=rand() % 9 + 1;
+	Booster->y=rand() % 9 + 1;
+	Booster->shape = "⊙";
+};
+
+
+void Render()
+{
+	ScreenPrint(Player->x, Player->y, Player->shape);
+	ScreenPrint(Booster->x, Booster->y, Booster->shape);
+}
+
+
+void KeyBored()
+{
+	switch (::move)
+	{
+	case 1:
+		Player->x++;
+	
+		break;
+	case 2:
+		Player->x--;
+		
+		break;
+	case 3:
+		Player->y--;
+		
+		break;
+	case 4:
+		Player->y++;
+		
+		break;
+	}
+	if (GetAsyncKeyState(VK_RIGHT))
+	{
+
+		Player->x++;
+		::move = 1;
+	}
+	if (GetAsyncKeyState(VK_LEFT))
+	{
+	
+		Player->x--;
+		::move = 2;
+
+
+	}
+	if (GetAsyncKeyState(VK_UP))
+	{
+		
+		Player->y--;
+		::move = 3;
+
+	}
+	if (GetAsyncKeyState(VK_DOWN))
+	{
+		Player->y++;
+		::move = 4;
+
+	}
+
+}
+
 
 int main()
 {
@@ -105,85 +194,46 @@ int main()
 	//[1] [2] [3]
 
 	*/
-
-	
+	Screen_Init();
+	PlayerInitialize();
+	BoosterInitialize();
 	int width = 1;
-	int move = 1;
 
 
 	//그렸다가 지웠다가 반복 
 	//[/////////]->[      ]->[////////]
 	//             []
-	
+	srand(time(NULL));
 
 	while (1)
 	{
-
+		KeyBored();
+		ScreenFlipping();
 		ScreenClear();
-		ScreenPrint(x, y, "■");
-	
-		//std::cout << "◆" << std::endl;
-		if (width == false)
-		{
-
-		}
 		Render();
+		//ScreenPrint(Player->x, Player->y,Player->shape);
+	
+		//x=1, y=1 
+		if (Player->x == 1 && Player->y == 1)
+		{
+			break;
+		}
+		Sleep(100);
+	
 		
-		switch (move)
-		{
-		case 1:
-			x++;
-			Sleep(100);
-			break;
-		case 2:
-			x--;
-			Sleep(100);
-
-			break;
-		case 3:
-			y--;
-			Sleep(100);
-
-			break;
-		case 4:
-			y++;
-			Sleep(100);
-
-			break;
-		}
-		if (GetAsyncKeyState(VK_RIGHT))
-		{
-			move = 1;
-			
-		}
-		if (GetAsyncKeyState(VK_LEFT))
-		{
-			move = 2;
-
-			
-		}
-		if (GetAsyncKeyState(VK_UP))
-		{
-			move = 3;
-
-		}
-		if (GetAsyncKeyState(VK_DOWN))
-		{
-			move = 4;
-
-		}
+		
+		
 	}
 	
 
-	FPS = 0;
-	FPS_TEXT = new char[128];
-	memset(FPS_TEXT, '\0', 128);
-	Screen_Init();
+
+	
+	
 
 	
 	//OldTime = clock();  // 시간을 측정합니다. 1 초 마다 갱신합니다. 
 
 	
-	Release();
+
 	ScreenRelese();
 }
