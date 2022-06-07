@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="2022.6.3.h" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="jaeheon.cpp" />

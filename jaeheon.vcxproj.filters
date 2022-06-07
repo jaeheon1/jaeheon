@@ -36,6 +36,9 @@
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="2022.6.3.h">
+      <Filter>Class Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2022.5.11.h">
